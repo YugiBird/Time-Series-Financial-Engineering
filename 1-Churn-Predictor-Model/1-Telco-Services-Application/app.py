@@ -42,10 +42,6 @@ def main():
 
     # load the model from disk
 
-    st.subheader('Upload The Secure Model')
-    uploaded_model = st.file_uploader('Choose a file', key=1)
-    if uploaded_model is not None:
-        model = joblib.load(uploaded_model)
 
     if add_selectbox == 'Online':
         st.info('Input data below')
