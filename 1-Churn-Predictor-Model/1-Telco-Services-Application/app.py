@@ -181,16 +181,18 @@ def main():
             # Preprocess inputs
 
             preprocess_df = preprocess(data, 'Batch')
+            st.subheader('Upload The Secure Model')
+            uploaded_model = st.file_uploader('Choose a file', key=2)
+            
+            if uploaded_model is not None:
+                model = joblib.load(uploaded_model)
+                prediction = model.predict(preprocess_df)
+                
             if st.button('Predict'):
 
                 # Get batch prediction
                 # prediction = model[0].predict(preprocess_df)
 
-                st.subheader('Upload The Secure Model')
-                uploaded_model = st.file_uploader('Choose a file', key=2) 
-                if uploaded_model is not None:
-                    model = joblib.load(uploaded_model)
-                    prediction = model.predict(preprocess_df)
                     prediction_df = pd.DataFrame(prediction,
                             columns=['Predictions'])
                     prediction_df = \
