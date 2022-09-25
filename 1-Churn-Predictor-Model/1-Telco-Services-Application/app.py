@@ -42,6 +42,10 @@ def main():
 
     # load the model from disk
 
+    st.subheader('Upload The Secure Model')
+    uploaded_model = st.file_uploader('Choose a file', key=1)
+    if uploaded_model is not None:
+        model = joblib.load(uploaded_model)
 
     if add_selectbox == 'Online':
         st.info('Input data below')
@@ -169,7 +173,7 @@ def main():
     else:
 
         st.subheader('Dataset upload')
-        uploaded_file = st.file_uploader('Choose a file', key=2)
+        uploaded_file = st.file_uploader('Choose a file', key=1)
         if uploaded_file is not None:
             data = pd.read_csv(uploaded_file)
 
@@ -186,9 +190,8 @@ def main():
                 # Get batch prediction
                 # prediction = model[0].predict(preprocess_df)
 
-
-            st.subheader('Upload The Secure Model')
-            uploaded_model = st.file_uploader('Choose a file', key=1)      
+                st.subheader('Upload The Secure Model')
+                uploaded_model = st.file_uploader('Choose a file', key=2) 
                 if uploaded_model is not None:
                     model = joblib.load(uploaded_model)
                     prediction = model.predict(preprocess_df)
