@@ -184,14 +184,15 @@ def main():
             if st.button("Predict"):
                 # Get batch prediction
                 # prediction = model[0].predict(preprocess_df)
-                prediction = model.predict(preprocess_df)
-                prediction_df = pd.DataFrame(prediction, columns=["Predictions"])
-                prediction_df = prediction_df.replace(
-                    {
-                        1: "Yes, the customer will terminate the service.",
-                        0: "No, the customer is happy with Telco Services.",
-                    }
-                )
+                if uploaded_model is not None:
+                    prediction = model.predict(preprocess_df)
+                    prediction_df = pd.DataFrame(prediction, columns=["Predictions"])
+                    prediction_df = prediction_df.replace(
+                        {
+                            1: "Yes, the customer will terminate the service.",
+                            0: "No, the customer is happy with Telco Services.",
+                        }
+                    )
 
                 st.markdown("<h3></h3>", unsafe_allow_html=True)
                 st.subheader("Prediction")
