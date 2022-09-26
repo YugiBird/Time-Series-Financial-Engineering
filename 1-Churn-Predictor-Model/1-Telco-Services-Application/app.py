@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 # Import libraries
 
 import streamlit as st
@@ -32,7 +33,7 @@ def main():
     # Setting Application sidebar default
 
     imager = \
-        Image.open('1-Churn-Predictor-Model/1-Telco-Services-Application/images/App.png'
+        Image.open(r"C:\Users\YugalNandurkar\Documents\Main Project\12 Active Session\Streamlit-Cloud-Quest\1-Telco-Services-Application\Telco-pkl-model\images\App.png"
                    )
     add_selectbox = \
         st.sidebar.selectbox('How would you like to predict?', ('Online'
@@ -192,14 +193,15 @@ def main():
         st.subheader('Upload The Secure Model')
         uploaded_model_k3 = st.file_uploader('Choose a file', key=3)
 
+        # if uploaded_model_k3 is not None:
 
-        if uploaded_model_k3 is not None:
-            model_k3 = joblib.load(uploaded_model_k3)
-            preprocess_df = preprocess(data, "Batch")
-            prediction = model_k3.predict(preprocess_df)
+        model_k3 = joblib.load(open(uploaded_model_k3, 'rb'))
+        preprocess_df = preprocess(data, 'Batch')
+        prediction = model_k3.predict(preprocess_df)
 
-        else:
-            st.write("Proceed To Upload Indispensable Model")
+
+        # else:
+            # container.write("Proceed To Upload Indispensable Model")
 
 if __name__ == '__main__':
     main()
