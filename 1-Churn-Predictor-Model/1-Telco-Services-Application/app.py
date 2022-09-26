@@ -195,7 +195,7 @@ def main():
 
         # if uploaded_model_k3 is not None:
 
-        model_k3 = joblib.load(uploaded_model_k3)
+        model_k3 = joblib.load(open(uploaded_model_k3, 'rb'))
         preprocess_df = preprocess(data, 'Batch')
         prediction = model_k3.predict(preprocess_df)
 
