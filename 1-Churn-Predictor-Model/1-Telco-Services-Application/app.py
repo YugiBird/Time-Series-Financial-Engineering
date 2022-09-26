@@ -197,19 +197,26 @@ def main():
         # Get batch prediction
 
         if st.button('Predict'):
-            model_k3 = joblib.load(uploaded_model_k3)
-            prediction = model_k3.predict(preprocess_dfb)
-            prediction_df = pd.DataFrame(prediction,
-                    columns=['Predictions'])
-            prediction_df = \
-                prediction_df.replace({1: 'Yes, the customer will terminate the service.'
-                    ,
-                    0: 'No, the customer is happy with Telco Services.'
-                    })
+            if uploaded_model_k3 is not None:
+                model_k3 = joblib.load(uploaded_model_k3)
 
-            st.markdown('<h3></h3>', unsafe_allow_html=True)
-            st.subheader('Prediction')
-            st.write(prediction_df)
+                if uploaded_file is not None:
+                    prediction = model_k3.predict(preprocess_dfb)
+                    prediction_df = pd.DataFrame(prediction,
+                            columns=['Predictions'])
+                    prediction_df = \
+                        prediction_df.replace({1: 'Yes, the customer will terminate the service.'
+                            ,
+                            0: 'No, the customer is happy with Telco Services.'
+                            })
+
+                    st.markdown('<h3></h3>', unsafe_allow_html=True)
+                    st.subheader('Prediction')
+                    st.write(prediction_df)
+                else:
+                    st.write('Prediction Needs Processed Dataset')
+            else:
+                st.write('Prediction Needs Indispensable Model')
 
 
 if __name__ == '__main__':
