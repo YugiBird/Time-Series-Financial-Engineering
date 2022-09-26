@@ -190,13 +190,13 @@ def main():
         # load the model from disk
 
         st.subheader('Upload The Secure Model')
-        uploaded_model = st.file_uploader('Choose a file', key=3)
+        uploaded_model_k3 = st.file_uploader('Choose a file', key=3)
 
 
-        if uploaded_model is not None:
-            model = joblib.load(uploaded_model)
+        if uploaded_model_k3 is not None:
+            model_k3 = joblib.load(uploaded_model_k3)
             preprocess_df = preprocess(data, "Batch")
-            prediction = model.predict(preprocess_df)
+            prediction = model_k3.predict(preprocess_df)
 
         else:
             st.write("Proceed To Upload Indispensable Model")
