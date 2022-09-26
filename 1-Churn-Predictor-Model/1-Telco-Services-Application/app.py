@@ -188,7 +188,7 @@ def main():
 
             with st.success('Processing Dataset'):
 
-                load the model from disk
+                #load the model from disk
 
                 st.subheader('Upload The Secure Model')
                 uploaded_model = st.file_uploader('Choose a file',
