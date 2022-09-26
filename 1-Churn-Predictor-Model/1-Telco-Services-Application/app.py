@@ -193,11 +193,13 @@ def main():
 
         st.subheader('Upload The Secure Model')
         uploaded_model_k3 = st.file_uploader('Choose a file', key=3)
-        model_k3 = joblib.load(uploaded_model_k3)
+
+        # model_k3 = joblib.load(uploaded_model_k3)
 
         # Get batch prediction
 
         if st.button('Predict'):
+            model_k3 = joblib.load(uploaded_model_k3)
             prediction = model_k3.predict(preprocess_dfb)
             prediction_df = pd.DataFrame(prediction,
                     columns=['Predictions'])
