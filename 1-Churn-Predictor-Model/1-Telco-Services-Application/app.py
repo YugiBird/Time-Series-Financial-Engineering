@@ -198,9 +198,6 @@ def main():
         # Get batch prediction
 
         if st.button('Predict'):
-
-            # preprocess_dfb = preprocess(data, "Batch")
-
             prediction = model_k3.predict(preprocess_dfb)
             prediction_df = pd.DataFrame(prediction,
                     columns=['Predictions'])
@@ -214,9 +211,6 @@ def main():
             st.subheader('Prediction')
             st.write(prediction_df)
 
-
-        # else:
-            # container.write("Proceed To Upload Indispensable Model")
 
 if __name__ == '__main__':
     main()
