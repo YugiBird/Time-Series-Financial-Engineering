@@ -193,13 +193,26 @@ def main():
 
         st.subheader('Upload The Secure Model')
         uploaded_model_k3 = st.file_uploader('Choose a file', key=3)
+        model_k3 = joblib.load(uploaded_model_k3)
 
-        if uploaded_model_k3 is not None:
-            model_k3 = joblib.load(uploaded_model_k3)
+        # Get batch prediction
+
+        if st.button('Predict'):
 
             # preprocess_dfb = preprocess(data, "Batch")
 
             prediction = model_k3.predict(preprocess_dfb)
+            prediction_df = pd.DataFrame(prediction,
+                    columns=['Predictions'])
+            prediction_df = \
+                prediction_df.replace({1: 'Yes, the customer will terminate the service.'
+                    ,
+                    0: 'No, the customer is happy with Telco Services.'
+                    })
+
+            st.markdown('<h3></h3>', unsafe_allow_html=True)
+            st.subheader('Prediction')
+            st.write(prediction_df)
 
 
         # else:
