@@ -176,8 +176,6 @@ def main():
 
         # Preprocess inputs
 
-        preprocess_df = preprocess(data, 'Batch')
-
         # load the model from disk
 
         st.subheader('Upload The Secure Model')
@@ -186,6 +184,7 @@ def main():
         if uploaded_model is not None:
             model = joblib.load(uploaded_model)
             prediction = model.predict(preprocess_df)
+            preprocess_df = preprocess(data, 'Batch')
 
         else:
             st.write("Proceed To Upload Indispensable Model")
