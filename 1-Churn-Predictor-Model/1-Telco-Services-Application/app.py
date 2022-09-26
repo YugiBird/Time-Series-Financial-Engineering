@@ -187,35 +187,19 @@ def main():
             # Preprocess inputs
 
             preprocess_df = preprocess(data, 'Batch')
-            if st.button('Predict'):
 
-                # Get batch prediction
-                # prediction = model[0].predict(preprocess_df)
+            # load the model from disk
 
-                # load the model from disk
+            st.subheader('Upload The Secure Model')
+            uploaded_model = st.file_uploader('Choose a file', key=3)
 
-                st.subheader('Upload The Secure Model')
-                uploaded_model = st.file_uploader('Choose a file',
-                        key=1)
-                if uploaded_model is not None:
-                    model = joblib.load(uploaded_model)
-                    prediction = model.predict(preprocess_df)
-                    prediction = model.predict(preprocess_df)
-                    prediction_df = pd.DataFrame(prediction,
-                            columns=['Predictions'])
-                    prediction_df = \
-                        prediction_df.replace({1: 'Yes, the customer will terminate the service.'
-                            ,
-                            0: 'No, the customer is happy with Telco Services.'
-                            })
-                else:
 
-                    st.write('Proceed To Upload Indispensable Model')
+            if uploaded_model is not None:
+                model = joblib.load(uploaded_model)
+                prediction = model.predict(preprocess_df)
 
-                st.markdown('<h3></h3>', unsafe_allow_html=True)
-                st.subheader('Prediction')
-                st.write(prediction_df)
-
+            else:
+                st.write("Proceed To Upload Indispensable Model")
 
 if __name__ == '__main__':
     main()
