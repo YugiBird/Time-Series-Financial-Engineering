@@ -162,17 +162,20 @@ def main():
         if uploaded_model is not None:
             model = joblib.load(uploaded_model)
             prediction = model.predict(preprocess_df)
-        else:
-
-            st.write('Proceed To Upload Indispensable Model')
 
         if st.button('Predict'):
-            if prediction == 1:
-                st.warning('Yes, the customer will terminate the service.'
-                           )
+            if uploaded_model is not None:
+                model = joblib.load(uploaded_model)
+                prediction = model.predict(preprocess_df)
+
+                if prediction == 1:
+                    st.warning('Yes, the customer will terminate the service.'
+                               )
+                else:
+                    st.success('No, the customer is happy with Telco Services.'
+                               )
             else:
-                st.success('No, the customer is happy with Telco Services.'
-                           )
+                st.write('Prediction Needs Indispensable Model')
     else:
 
         # Preprocess inputs
