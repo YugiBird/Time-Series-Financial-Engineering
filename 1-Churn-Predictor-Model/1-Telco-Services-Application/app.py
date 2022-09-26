@@ -195,8 +195,8 @@ def main():
 
         if uploaded_model is not None:
             model = joblib.load(uploaded_model)
-            prediction = model.predict(preprocess_df)
             preprocess_df = preprocess(data, "Batch")
+            prediction = model.predict(preprocess_df)
 
         else:
             st.write("Proceed To Upload Indispensable Model")
