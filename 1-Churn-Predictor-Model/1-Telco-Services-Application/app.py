@@ -193,13 +193,13 @@ def main():
         uploaded_model = st.file_uploader('Choose a file', key=3)
 
 
-        # if uploaded_model is not None:
-            # model = joblib.load(uploaded_model)
-            # prediction = model.predict(preprocess_df)
-            # preprocess_df = preprocess(data, "Batch")
+        if uploaded_model is not None:
+            model = joblib.load(uploaded_model)
+            prediction = model.predict(preprocess_df)
+            preprocess_df = preprocess(data, "Batch")
 
-        # else:
-            # st.write("Proceed To Upload Indispensable Model")
+        else:
+            st.write("Proceed To Upload Indispensable Model")
 
 if __name__ == '__main__':
     main()
