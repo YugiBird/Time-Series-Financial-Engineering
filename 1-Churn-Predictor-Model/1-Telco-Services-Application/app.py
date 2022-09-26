@@ -33,7 +33,7 @@ def main():
     # Setting Application sidebar default
 
     imager = \
-        Image.open(r"C:\Users\YugalNandurkar\Documents\Main Project\12 Active Session\Streamlit-Cloud-Quest\1-Telco-Services-Application\Telco-pkl-model\images\App.png"
+        Image.open('1-Churn-Predictor-Model/1-Telco-Services-Application/images/App.png'
                    )
     add_selectbox = \
         st.sidebar.selectbox('How would you like to predict?', ('Online'
