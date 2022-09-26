@@ -183,12 +183,12 @@ def main():
         st.subheader('Upload The Secure Model')
         uploaded_model = st.file_uploader('Choose a file', key=3)
 
-        # if uploaded_model is not None:
-            # model = joblib.load(uploaded_model)
-            # prediction = model.predict(preprocess_df)
+        if uploaded_model is not None:
+            model = joblib.load(uploaded_model)
+            prediction = model.predict(preprocess_df)
 
-        # else:
-            # st.write("Proceed To Upload Indispensable Model")
+        else:
+            st.write("Proceed To Upload Indispensable Model")
 
         st.subheader('Dataset upload')
         uploaded_file = st.file_uploader('Choose a file', key=2)
