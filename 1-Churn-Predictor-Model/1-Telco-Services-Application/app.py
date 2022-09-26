@@ -182,6 +182,7 @@ def main():
         uploaded_file = container.file_uploader('Choose a file', key=2)
         if uploaded_file is not None:
             data = pd.read_csv(uploaded_file)
+            preprocess_dfb = preprocess(data, 'Batch')
 
             # Get overview of data
 
@@ -193,11 +194,11 @@ def main():
         st.subheader('Upload The Secure Model')
         uploaded_model_k3 = st.file_uploader('Choose a file', key=3)
 
-        # if uploaded_model_k3 is not None:
+        if uploaded_model_k3 is not None:
 
-        model_k3 = joblib.load(open(uploaded_model_k3, 'rb'))
-        preprocess_df = preprocess(data, 'Batch')
-        prediction = model_k3.predict(preprocess_df)
+        model_k3 = joblib.load(uploaded_model_k3)
+        #preprocess_dfb = preprocess(data, 'Batch')
+        prediction = model_k3.predict(preprocess_dfb)
 
 
         # else:
