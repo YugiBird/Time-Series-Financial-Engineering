@@ -176,32 +176,30 @@ def main():
 
         # Preprocess inputs
 
-        st.subheader('Dataset upload')
-        uploaded_file = st.file_uploader('Choose a file', key=2)
+        container = st.container()
+        container.subheader('Dataset upload')
+        uploaded_file = container.file_uploader('Choose a file', key=2)
         if uploaded_file is not None:
             data = pd.read_csv(uploaded_file)
 
             # Get overview of data
 
-            st.write(data.head())
-            st.markdown('<h3></h3>', unsafe_allow_html=True)
+            container.write(data.head())
+            container.markdown('<h3></h3>', unsafe_allow_html=True)
 
-            with st.success('Processing Dataset'):
+        # load the model from disk
 
-                #load the model from disk
-
-                st.subheader('Upload The Secure Model')
-                uploaded_model = st.file_uploader('Choose a file',
-                        key=3)
+        st.subheader('Upload The Secure Model')
+        uploaded_model = st.file_uploader('Choose a file', key=3)
 
 
-                if uploaded_model is not None:
-                    model = joblib.load(uploaded_model)
-                    prediction = model.predict(preprocess_df)
-                    preprocess_df = preprocess(data, "Batch")
+        # if uploaded_model is not None:
+            # model = joblib.load(uploaded_model)
+            # prediction = model.predict(preprocess_df)
+            # preprocess_df = preprocess(data, "Batch")
 
-                else:
-                    st.write("Proceed To Upload Indispensable Model")
+        # else:
+            # st.write("Proceed To Upload Indispensable Model")
 
 if __name__ == '__main__':
     main()
