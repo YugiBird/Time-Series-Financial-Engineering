@@ -33,7 +33,7 @@ def main():
     # Setting Application sidebar default
 
     imager = \
-        Image.open('1-Churn-Predictor-Model/1-Telco-Services-Application/images/App.png'
+        Image.open('/workspace/Time-Series-Financial-Engineering/1-Churn-Predictor-Model/1-Telco-Services-Application/images/App.png'
                    )
     add_selectbox = \
         st.sidebar.selectbox('How would you like to predict?', ('Online'
