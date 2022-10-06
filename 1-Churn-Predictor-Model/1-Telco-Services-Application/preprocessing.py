@@ -104,7 +104,7 @@ def preprocess(df, option):
             "Internet_Type_None",
             "Contract_One_Year",
             "Contract_Two_Year",
-            "Payment Method_Credit_Card",
+            "Payment_Method_Credit_Card",
         ]
         # Encoding the other categorical categoric features with more than two categories
         df = pd.get_dummies(df).reindex(columns=columns, fill_value=0)
